@@ -47642,6 +47642,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //     zoom: 4
 //   })
 // });
+// CODE HERE!
 var brasil = [-51.925282, -14.235004]; // caution partner, read on...
 // since we are using OSM, we have to transform the coordinates...
 
@@ -47654,10 +47655,10 @@ var map = new _Map.default({
   target: 'map',
   view: new _View.default({
     center: center,
-    zoom: 2
+    zoom: 4
   })
 });
-var pos = (0, _proj.fromLonLat)([16.3725, 48.208889]); // Vienna marker
+var pos = (0, _proj.fromLonLat)([-46.6388, -23.5489]); // Vienna marker
 
 var marker = new _Overlay.default({
   position: pos,
@@ -47665,32 +47666,32 @@ var marker = new _Overlay.default({
   element: document.getElementById('marker'),
   stopEvent: false
 });
-map.addOverlay(marker); // Vienna label
-
-var vienna = new _Overlay.default({
-  position: pos,
-  element: document.getElementById('vienna')
-});
-map.addOverlay(vienna); // Popup showing the position the user clicked
-
-var popup = new _Overlay.default({
-  element: document.getElementById('popup')
-});
-map.addOverlay(popup);
-map.on('click', function (evt) {
-  var element = popup.getElement();
-  var coordinate = evt.coordinate;
-  var hdms = (0, _coordinate.toStringHDMS)((0, _proj.toLonLat)(coordinate));
-  $(element).popover('destroy');
-  popup.setPosition(coordinate);
-  $(element).popover({
-    placement: 'top',
-    animation: false,
-    html: true,
-    content: '<p>The location you clicked was:</p><code>' + hdms + '</code>'
-  });
-  $(element).popover('show');
-});
+map.addOverlay(marker); // CODE FINISH
+// Vienna label
+// var brasil = new Overlay({
+// position: pos,
+// element: document.getElementById('brasil')
+// });
+// map.addOverlay(brasil);
+// Popup showing the position the user clicked
+// var popup = new Overlay({
+//   element: document.getElementById('popup')
+// });
+// map.addOverlay(popup);
+// map.on('click', function(evt) {
+//   var element = popup.getElement();
+//   var coordinate = evt.coordinate;
+//   var hdms = toStringHDMS(toLonLat(coordinate));
+//   $(element).popover('destroy');
+//   popup.setPosition(coordinate);
+//   $(element).popover({
+//     placement: 'top',
+//     animation: false,
+//     html: true,
+//     content: '<p>The location you clicked was:</p><code>' + hdms + '</code>'
+//   });
+//   $(element).popover('show');
+// });
 },{"ol/Map.js":"node_modules/ol/Map.js","ol/Overlay.js":"node_modules/ol/Overlay.js","ol/View.js":"node_modules/ol/View.js","ol/coordinate.js":"node_modules/ol/coordinate.js","ol/layer/Tile.js":"node_modules/ol/layer/Tile.js","ol/proj.js":"node_modules/ol/proj.js","ol/source/OSM.js":"node_modules/ol/source/OSM.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -47718,7 +47719,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42228" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46402" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

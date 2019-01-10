@@ -40,6 +40,7 @@
       //   })
       // });
 
+      // CODE HERE!
       import Map from 'ol/Map.js';
       import Overlay from 'ol/Overlay.js';
       import View from 'ol/View.js';
@@ -66,7 +67,7 @@
         })
       });
 
-      var pos = fromLonLat([-51.925282,-14.235004]);
+      var pos = fromLonLat([-46.6388,-23.5489]);
 
       // Vienna marker
       var marker = new Overlay({
@@ -77,32 +78,34 @@
       });
       map.addOverlay(marker);
 
+      // CODE FINISH
+
       // Vienna label
-      var vienna = new Overlay({
-        position: pos,
-        element: document.getElementById('vienna')
-      });
-      map.addOverlay(vienna);
+      // var brasil = new Overlay({
+        // position: pos,
+        // element: document.getElementById('brasil')
+      // });
+      // map.addOverlay(brasil);
 
       // Popup showing the position the user clicked
-      var popup = new Overlay({
-        element: document.getElementById('popup')
-      });
-      map.addOverlay(popup);
+      // var popup = new Overlay({
+      //   element: document.getElementById('popup')
+      // });
+      // map.addOverlay(popup);
 
-      map.on('click', function(evt) {
-        var element = popup.getElement();
-        var coordinate = evt.coordinate;
-        var hdms = toStringHDMS(toLonLat(coordinate));
+      // map.on('click', function(evt) {
+      //   var element = popup.getElement();
+      //   var coordinate = evt.coordinate;
+      //   var hdms = toStringHDMS(toLonLat(coordinate));
 
-        $(element).popover('destroy');
-        popup.setPosition(coordinate);
-        $(element).popover({
-          placement: 'top',
-          animation: false,
-          html: true,
-          content: '<p>The location you clicked was:</p><code>' + hdms + '</code>'
-        });
-        $(element).popover('show');
-      });
+      //   $(element).popover('destroy');
+      //   popup.setPosition(coordinate);
+      //   $(element).popover({
+      //     placement: 'top',
+      //     animation: false,
+      //     html: true,
+      //     content: '<p>The location you clicked was:</p><code>' + hdms + '</code>'
+      //   });
+      //   $(element).popover('show');
+      // });
   
