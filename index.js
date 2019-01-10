@@ -62,11 +62,11 @@
         target: 'map',
         view: new View({
           center: center,
-          zoom: 2
+          zoom: 4
         })
       });
 
-      var pos = fromLonLat([16.3725, 48.208889]);
+      var pos = fromLonLat([-51.925282,-14.235004]);
 
       // Vienna marker
       var marker = new Overlay({
@@ -105,3 +105,4 @@
         });
         $(element).popover('show');
       });
+  
