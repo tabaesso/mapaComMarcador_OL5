@@ -67,16 +67,47 @@
         })
       });
 
-      var pos = fromLonLat([-46.6388,-23.5489]);
+      var pos = [[-46.6388,-23.5489],[-23.5489,-46.6388],[0,0]];
+
+      // var pos1 = fromLonLat([-46.6388,-23.5489]);
+
+          // UM MARCADOR APENAS
+          // var marker = new Overlay({
+          //   position: pos1,
+          //   positioning: 'center-center',
+          //   element: document.getElementById('marker'),
+          //   stopEvent: false
+          // });
+          // map.addOverlay(marker);
+      
+       var marker = []
+
+          for(var i=0; i<pos.length; i++){
+
+            var div = document.createElement("div")
+            div.title = "Marker"
+            div.id = "marker"+i
+            div.className = "fa fa-map-pin"
+
+            marker[i] = new Overlay({
+                position: fromLonLat(pos[i]),
+                positioning: 'center-center',
+                element: div,
+                stopEvent: false
+            });
+            map.addOverlay(marker[i]);
+          }
+    
+
 
       // Vienna marker
-      var marker = new Overlay({
-        position: pos,
-        positioning: 'center-center',
-        element: document.getElementById('marker'),
-        stopEvent: false
-      });
-      map.addOverlay(marker);
+      // var marker = new Overlay({
+      //   position: pos,
+      //   positioning: 'center-center',
+      //   element: document.getElementById('marker'),
+      //   stopEvent: false
+      // });
+      // map.addOverlay(marker);
 
       // CODE FINISH
 
