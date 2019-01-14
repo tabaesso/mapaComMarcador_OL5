@@ -47605,47 +47605,7 @@ var _OSM = _interopRequireDefault(require("ol/source/OSM.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import 'ol/ol.css';
-// import {Map, View} from 'ol';
-// import TileLayer from 'ol/layer/Tile';
-// import OSM from 'ol/source/OSM';
-// const map = new Map({
-//   target: 'map',
-//   layers: [
-//     new TileLayer({
-//       source: new OSM()
-//     })
-//   ],
-//   view: new View({
-//     center: [-0.1279688, 51.5077286],
-//     zoom: 4
-//   })
-// });
-// import Map from 'ol/Map.js';
-// import View from 'ol/View.js';
-// import TileLayer from 'ol/layer/Tile.js';
-// import OSM from 'ol/source/OSM.js';
-// import {fromLonLat} from 'ol/proj';
-// const brasil = [-51.925282,-14.235004];
-//  // caution partner, read on...
-//   // since we are using OSM, we have to transform the coordinates...
-// const center = fromLonLat(brasil);
-// var map = new Map({
-//   layers: [
-//     new TileLayer({
-//       source: new OSM()
-//     })
-//   ],
-//   target: 'map',
-//   view: new View({
-//     center: center,
-//     zoom: 4
-//   })
-// });
-// CODE HERE!
-var brasil = [-51.925282, -14.235004]; // caution partner, read on...
-// since we are using OSM, we have to transform the coordinates...
-
+var brasil = [-51.925282, -14.235004];
 var center = (0, _proj.fromLonLat)(brasil);
 var layer = new _Tile.default({
   source: new _OSM.default()
@@ -47658,16 +47618,33 @@ var map = new _Map.default({
     zoom: 4
   })
 });
-var pos = (0, _proj.fromLonLat)([-46.6388, -23.5489]); // Vienna marker
+var pos = [[-46.6388, -23.5489], [-23.5489, -46.6388], [0, 0], [-43.182365, -22.970722], [-43.9542, -19.8157], [-47.9292, -15.7801]]; // var pos1 = fromLonLat([-46.6388,-23.5489]);
+// UM MARCADOR APENAS
+// var marker = new Overlay({
+//   position: pos1,
+//   positioning: 'center-center',
+//   element: document.getElementById('marker'),
+//   stopEvent: false
+// });
+// map.addOverlay(marker);
 
-var marker = new _Overlay.default({
-  position: pos,
-  positioning: 'center-center',
-  element: document.getElementById('marker'),
-  stopEvent: false
-});
-map.addOverlay(marker); // CODE FINISH
-// Vienna label
+var marker = [];
+
+for (var i = 0; i < pos.length; i++) {
+  var div = document.createElement("div");
+  div.title = "evento";
+  div.id = "marker" + i;
+  div.className = "fa fa-map-pin";
+  div.style.color = "#f11";
+  div.style.padding = "0px 0px 12px 0px";
+  marker[i] = new _Overlay.default({
+    position: (0, _proj.fromLonLat)(pos[i]),
+    positioning: 'center-center',
+    element: div,
+    stopEvent: false
+  });
+  map.addOverlay(marker[i]);
+} // Vienna label
 // var brasil = new Overlay({
 // position: pos,
 // element: document.getElementById('brasil')
@@ -47719,7 +47696,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40260" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43974" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
